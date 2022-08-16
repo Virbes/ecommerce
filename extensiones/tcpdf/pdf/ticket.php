@@ -28,7 +28,7 @@ $respuestaVenta = ControladorVentas::ctrMostrarVentas($itemVenta, $valorVenta);
 $fecha = substr($respuestaVenta["fecha"],0,-8);
 $productos = json_decode($respuestaVenta["productos"], true);
 $neto = number_format($respuestaVenta["neto"],2);
-$impuesto = number_format($respuestaVenta["impuesto"],2);
+// $impuesto = number_format($respuestaVenta["impuesto"],2);
 $total = number_format($respuestaVenta["total"],2);
 
 //TRAEMOS LA INFORMACIÓN DEL CLIENTE
@@ -247,20 +247,6 @@ $bloque5 = <<<EOF
 
 			<td style="border: 1px solid #666; color:#333; background-color:white; width:100px; text-align:center">
 				$ $neto
-			</td>
-
-		</tr>
-
-		<tr>
-
-			<td style="border-right: 1px solid #666; color:#333; background-color:white; width:340px; text-align:center"></td>
-
-			<td style="border: 1px solid #666; background-color:white; width:100px; text-align:center">
-				Impuesto:
-			</td>
-		
-			<td style="border: 1px solid #666; color:#333; background-color:white; width:100px; text-align:center">
-				$ $impuesto
 			</td>
 
 		</tr>

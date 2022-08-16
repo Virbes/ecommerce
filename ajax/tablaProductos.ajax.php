@@ -96,12 +96,7 @@ class TablaProductos{
   			/*=============================================
   			TRAER DETALLES
   			=============================================*/
-  			$detalles = json_decode($productos[$i]["detalles"],true);
-
-            $color = json_encode($detalles["Color"]);
-            $marca = json_encode($detalles["Marca"]);
-
-            $vistaDetalles = "Color: ".str_replace(array("[","]",'"'), "", $color)."Marca: ".str_replace(array("[","]",'"'), "", $marca);
+  			$marcaProducto = $productos[$i]["marcaProducto"];
 
 
   			/*=============================================
@@ -178,7 +173,7 @@ class TablaProductos{
 					"'.$cabeceras["descripcion"].'",
 				  	"'.$imagenPrincipal.'",
 		  			"'.$precio.'",
-				  	"'.$productos[$i]["peso"].' kg",
+				  	"'.$marcaProducto.'",
 				  	"'.$acciones.'"  	
 			],';	   
 		}

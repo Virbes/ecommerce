@@ -51,7 +51,7 @@ class AjaxProductos{
 
 
 	/*=============================================
-	VALIDAR NO REPETIR PRODUCTO
+	VALIDAR NO REPETIR PRODUCTO+
 	=============================================*/	
 	public $validarCodigo;
 	public function ajaxValidarCodigo(){
@@ -82,14 +82,12 @@ class AjaxProductos{
 
 	public $tituloProducto;
 	public $rutaProducto;
-	public $codigoProducto;
-	public $detalles;			
+	public $codigoProducto;	
 	public $seleccionarCategoria;
 	public $seleccionarSubCategoria;
 	public $descripcionProducto;
 	public $pClavesProducto;
 	public $precio;
-	public $peso;
 	public $entrega;
 	public $stock;
 	public $multimedia;
@@ -99,6 +97,7 @@ class AjaxProductos{
 	public $precioOferta;
 	public $descuentoOferta;
 	public $finOferta;
+	public $marcaProducto;
 	public $fotoOferta;
 
 	public $id;
@@ -112,13 +111,12 @@ class AjaxProductos{
 			"tituloProducto"=>$this->tituloProducto,
 			"rutaProducto"=>$this->rutaProducto,
 			"codigoProducto"=>$this->codigoProducto,
-			"detalles"=>$this->detalles,					
+			"marcaProducto"=>$this->marcaProducto,					
 			"categoria"=>$this->seleccionarCategoria,
 			"subCategoria"=>$this->seleccionarSubCategoria,
 			"descripcionProducto"=>$this->descripcionProducto,
 			"pClavesProducto"=>$this->pClavesProducto,
 			"precio"=>$this->precio,
-			"peso"=>$this->peso,
 			"entrega"=>$this->entrega,
 			"stock"=>$this->stock,
 			"multimedia"=>$this->multimedia,

@@ -38,7 +38,7 @@
                <th>Descripción</th>
                <th>Imagen Principal</th>
                <th>Precio</th>
-               <th>Peso</th>
+               <th>Marca</th>
                <th>Acciones</th>
                <!-- <th>Detalles</th> -->
             </tr> 
@@ -88,16 +88,6 @@ MODAL AGREGAR PRODUCTO
             </div>
 
             <!--=====================================
-            ENTRADA PARA LA RUTA DEL PRODUCTO
-            ======================================-->
-            <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-link"></i></span> 
-                  <input type="text" class="form-control input-lg rutaProducto" placeholder="Ruta url del producto" readonly>
-                </div>
-            </div>
-
-            <!--=====================================
             ENTRADA PARA EL CÓDIGO DEL PRODUCTO
             ======================================-->
             <div class="form-group">
@@ -130,19 +120,6 @@ MODAL AGREGAR PRODUCTO
             ======================================-->  
             <div class="detallesFisicos">
               <div class="panel">DETALLES</div>
-
-              <!-- COLOR -->
-              <div class="form-group row">
-
-                <div class="col-xs-3">
-                  <input class="form-control input-lg" type="text" value="Color" readonly>
-                </div>
-
-                <div class="col-xs-9">
-                    <input class="form-control input-lg tagsInput detalleColor" data-role="tagsinput" type="text" placeholder="Separe valores con coma">
-                </div>
-
-              </div>
 
               <!-- MARCA -->
               <div class="form-group row">
@@ -213,10 +190,10 @@ MODAL AGREGAR PRODUCTO
             <!--=====================================
             AGREGAR PALABRAS CLAVES
             ======================================-->
-            <div class="form-group">
+            <div class="form-group" style="display:none">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-key"></i></span> 
-                  <input type="text" class="form-control input-lg tagsInput pClavesProducto" data-role="tagsinput"  placeholder="Ingresar palabras claves">
+                  <input type="text" class="form-control input-lg tagsInput pClavesProducto" data-role="tagsinput"  placeholder="Ingresar palabras claves" value="">
                 </div>
             </div>
 
@@ -261,18 +238,9 @@ MODAL AGREGAR PRODUCTO
               
               <style>.mg-left-v {margin-left: -17px;}</style>
 
-              <!-- PESO -->
-              <div class="col-md-3 col-xs-12 mg-left-v">
-                <div class="panel">PESO</div>
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-balance-scale"></i></span> 
-                  <input type="number" class="form-control input-lg peso" min="0" step="any" value="0">
-                </div>
-              </div>
-
 
               <!-- ENTREGA -->
-              <div class="col-md-3 col-xs-12 mg-left-v">
+              <div class="col-md-4 col-xs-12 mg-left-v">
                 <div class="panel">DÍAS DE ENTREGA</div>             
                 <div class="input-group">             
                   <span class="input-group-addon"><i class="fa fa-truck"></i></span> 
@@ -281,7 +249,7 @@ MODAL AGREGAR PRODUCTO
               </div>
 
                <!-- STOCK -->
-               <div class="col-md-3 col-xs-12 mg-left-v">
+               <div class="col-md-4 col-xs-12 mg-left-v">
                 <div class="panel">STOCK</div>             
                 <div class="input-group">             
                   <span class="input-group-addon"><i class="fa fa-cubes"></i></span> 
@@ -454,7 +422,7 @@ MODAL EDITAR PRODUCTO
               <div class="form-group row">
 
                 <div class="col-xs-3">
-                  <input class="form-control input-lg" type="text" value="Marca" readonly>
+                  <input class="form-control input-lg" id="marcaProducto" type="text" value="Marca" readonly>
                 </div>
 
                 <div class="col-xs-9 editarMarca">

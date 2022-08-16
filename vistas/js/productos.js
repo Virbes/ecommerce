@@ -107,7 +107,7 @@ $(".validarProducto").change(function(){
 	    dataType: "json",
 	    success:function(respuesta){
 
-    		if(respuesta.length != 0){
+    		if(respuesta){
     			$(".validarProducto").parent().after('<div class="alert alert-warning" id="alert1">Este título de producto ya existe en la base de datos</div>');
 	    		$(".validarProducto").val("");
     		}
@@ -524,8 +524,7 @@ $(".guardarProducto").click(function(){
 	   $(".seleccionarCategoria").val() != "" &&
 	   $(".codigoProducto").val() != "" &&
 	   $(".seleccionarSubCategoria").val() != "" &&
-	   $(".descripcionProducto").val() != "" &&
-	   $(".pClavesProducto").val() != ""){
+	   $(".descripcionProducto").val() != ""){
 
 		/*=============================================
 	   	PREGUNTAMOS SI VIENEN IMÁGENES PARA MULTIMEDIA O LINK DE YOUTUBE
@@ -649,37 +648,27 @@ function agregarMiProducto(imagen){
 	    var descripcionProducto = $(".descripcionProducto").val();
 	    var pClavesProducto = $(".pClavesProducto").val();
 	    var precio = $(".precio").val();
-	    var peso = $(".peso").val();
 	    var entrega = $(".entrega").val();
 		var stock = $(".stock").val();
 	    var selActivarOferta = $(".selActivarOferta").val();
 	    var precioOferta = $(".precioOferta").val();
 	    var descuentoOferta = $(".descuentoOferta").val();
 	    var finOferta = $(".finOferta").val();
-
-		var detalles = {
-							"Color": $(".detalleColor").tagsinput('items'),
-							"Marca": $(".detalleMarca").tagsinput('items')
-						};
-
-		
-
-		var detallesString = JSON.stringify(detalles);
+		var marcaProducto = $("#marcaProducto").val();
 
 	 	var datosProducto = new FormData();
 		datosProducto.append("tituloProducto", tituloProducto);
 		datosProducto.append("rutaProducto", rutaProducto);
 		datosProducto.append("codigoProducto", codigoProducto);
-		datosProducto.append("detalles", detallesString);	
 		datosProducto.append("seleccionarCategoria", seleccionarCategoria);
 		datosProducto.append("seleccionarSubCategoria", seleccionarSubCategoria);
 		datosProducto.append("descripcionProducto", descripcionProducto);
 		datosProducto.append("pClavesProducto", pClavesProducto);
 		datosProducto.append("precio", precio);
-		datosProducto.append("peso", peso);
 		datosProducto.append("entrega", entrega);	
 		datosProducto.append("stock", stock);	
 		datosProducto.append("multimedia", imagen);
+		datosProducto.append("marcaProducto", marcaProducto);
 		
 		datosProducto.append("fotoPortada", imagenPortada);
 		datosProducto.append("fotoPrincipal", imagenFotoPrincipal);

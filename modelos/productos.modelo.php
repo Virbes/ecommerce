@@ -170,7 +170,7 @@ class ModeloProductos{
 		$stmt->bindParam(":titular", $datos["titular"], PDO::PARAM_STR);
 		$stmt->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
 		$stmt->bindParam(":multimedia", $datos["multimedia"], PDO::PARAM_STR);
-		$stmt->bindParam(":detalles", $datos["detalles"], PDO::PARAM_STR);
+		$stmt->bindParam(":marcaProducto", $datos["marcaProducto"], PDO::PARAM_STR);
 		$stmt->bindParam(":precio", $datos["precio"], PDO::PARAM_STR);
 		$stmt->bindParam(":portada", $datos["imgFotoPrincipal"], PDO::PARAM_STR);
 		$stmt->bindParam(":oferta", $datos["oferta"], PDO::PARAM_STR);
@@ -178,7 +178,6 @@ class ModeloProductos{
 		$stmt->bindParam(":descuentoOferta", $datos["descuentoOferta"], PDO::PARAM_STR);
 		$stmt->bindParam(":imgOferta", $datos["imgOferta"], PDO::PARAM_STR);
 		$stmt->bindParam(":finOferta", $datos["finOferta"], PDO::PARAM_STR);
-		$stmt->bindParam(":peso", $datos["peso"], PDO::PARAM_STR);
 		$stmt->bindParam(":entrega", $datos["entrega"], PDO::PARAM_STR);
 		$stmt->bindParam(":stock", $datos["stock"], PDO::PARAM_STR);
 
