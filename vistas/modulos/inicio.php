@@ -73,7 +73,7 @@
              echo '
              <div class="box box-success">
               <div class="box-header">
-                <h1 style="color: #ccc">Bienvenid@ ' .$_SESSION["nombre"].'</h1>
+                <h1 style="color: #ccc">Hola ' .$_SESSION["nombre"].'</h1>
               </div>
              </div>';
 

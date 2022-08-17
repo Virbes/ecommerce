@@ -6,3 +6,7 @@
     background-color: #ff6600;
     border-color: #ccc;
 }
+.flecha{
+    appearance: none;
+    text-align: center;
+}

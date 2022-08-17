@@ -183,7 +183,7 @@
 
                     <div class="input-group">
 
-                      <select class="form-control" id="nuevoMetodoPago" name="nuevoMetodoPago" required disabled>
+                      <select class="form-control flecha" id="nuevoMetodoPago" name="nuevoMetodoPago" required disabled>
                         <option value="">Seleccione método de pago</option>
                         <option value="Efectivo" selected>Efectivo</option>
                         <option value="TC">Tarjeta Crédito</option>
