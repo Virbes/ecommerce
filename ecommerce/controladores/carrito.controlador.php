@@ -3,20 +3,6 @@
 class ControladorCarrito{
 
 	/*=============================================
-	MOSTRAR TARIFAS
-	=============================================*/
-
-	public static function ctrMostrarTarifas(){
-
-		$tabla = "comercio";
-
-		$respuesta = ModeloCarrito::mdlMostrarTarifas($tabla);
-
-		return $respuesta;
-
-	}	
-
-	/*=============================================
 	NUEVAS COMPRAS
 	=============================================*/
 

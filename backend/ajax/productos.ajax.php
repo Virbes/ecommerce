@@ -9,9 +9,6 @@ require_once "../modelos/categorias.modelo.php";
 require_once "../controladores/subcategorias.controlador.php";
 require_once "../modelos/subcategorias.modelo.php";
 
-require_once "../controladores/cabeceras.controlador.php";
-require_once "../modelos/cabeceras.modelo.php";
-
 class AjaxProductos{
 
 	/*=============================================
@@ -83,14 +80,11 @@ class AjaxProductos{
 	public $tituloProducto;
 	public $rutaProducto;
 	public $codigoProducto;
-	public $detalles;			
+	public $marcaProducto;			
 	public $seleccionarCategoria;
 	public $seleccionarSubCategoria;
 	public $descripcionProducto;
-	public $pClavesProducto;
 	public $precio;
-	public $peso;
-	public $entrega;
 	public $stock;
 	public $multimedia;
 	public $fotoPortada;
@@ -112,14 +106,11 @@ class AjaxProductos{
 			"tituloProducto"=>$this->tituloProducto,
 			"rutaProducto"=>$this->rutaProducto,
 			"codigoProducto"=>$this->codigoProducto,
-			"detalles"=>$this->detalles,					
+			"marcaProducto"=>$this->marcaProducto,					
 			"categoria"=>$this->seleccionarCategoria,
 			"subCategoria"=>$this->seleccionarSubCategoria,
 			"descripcionProducto"=>$this->descripcionProducto,
-			"pClavesProducto"=>$this->pClavesProducto,
 			"precio"=>$this->precio,
-			"peso"=>$this->peso,
-			"entrega"=>$this->entrega,
 			"stock"=>$this->stock,
 			"multimedia"=>$this->multimedia,
 			"fotoPortada"=>$this->fotoPortada,
@@ -242,14 +233,11 @@ if(isset($_POST["tituloProducto"])){
 	$producto -> tituloProducto = $_POST["tituloProducto"];
 	$producto -> rutaProducto = $_POST["rutaProducto"];
 	$producto -> codigoProducto = $_POST["codigoProducto"];
-	$producto -> detalles = $_POST["detalles"];		
+	$producto -> marcaProducto = $_POST["marcaProducto"];
 	$producto -> seleccionarCategoria = $_POST["seleccionarCategoria"];
 	$producto -> seleccionarSubCategoria = $_POST["seleccionarSubCategoria"];
 	$producto -> descripcionProducto = $_POST["descripcionProducto"];
-	$producto -> pClavesProducto = $_POST["pClavesProducto"];
 	$producto -> precio = $_POST["precio"];
-	$producto -> peso = $_POST["peso"];
-	$producto -> entrega = $_POST["entrega"];
 	$producto -> stock = $_POST["stock"];
 	$producto -> multimedia = $_POST["multimedia"];
 
@@ -301,14 +289,11 @@ if(isset($_POST["id"])){
 	$editarProducto -> tituloProducto = $_POST["editarProducto"];
 	$editarProducto -> rutaProducto = $_POST["rutaProducto"];
 	$editarProducto -> codigoProducto = $_POST["codigoProducto"];
-	$editarProducto -> detalles = $_POST["detalles"];		
+	$editarProducto -> marcaProducto = $_POST["marcaProducto"];		
 	$editarProducto -> seleccionarCategoria = $_POST["seleccionarCategoria"];
 	$editarProducto -> seleccionarSubCategoria = $_POST["seleccionarSubCategoria"];
 	$editarProducto -> descripcionProducto = $_POST["descripcionProducto"];
-	$editarProducto -> pClavesProducto = $_POST["pClavesProducto"];
 	$editarProducto -> precio = $_POST["precio"];
-	$editarProducto -> peso = $_POST["peso"];
-	$editarProducto -> entrega = $_POST["entrega"];
 	$editarProducto -> multimedia = $_POST["multimedia"];
 
 	if(isset($_FILES["fotoPortada"])){

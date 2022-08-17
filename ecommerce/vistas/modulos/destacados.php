@@ -229,7 +229,7 @@ for($i = 0; $i < count($titulosModulos); $i ++){
 
 										if($value["oferta"] != 0){
 
-											echo '<button type="button" class="btn btn-default btn-xs agregarCarrito"  idProducto="'.$value["id"].'" imagen="'.$servidor.$value["portada"].'" titulo="'.$value["titulo"].'" precio="'.$value["precioOferta"].'" tipo="'.$value["tipo"].'" peso="'.$value["peso"].'" data-toggle="tooltip" title="Agregar al carrito">
+											echo '<button type="button" class="btn btn-default btn-xs agregarCarrito"  idProducto="'.$value["id"].'" imagen="'.$servidor.$value["portada"].'" titulo="'.$value["titulo"].'" precio="'.$value["precioOferta"].'" tipo="'.$value["tipo"].'" data-toggle="tooltip" title="Agregar al carrito">
 
 											<i class="fa fa-shopping-cart" aria-hidden="true"></i>
 
@@ -237,7 +237,7 @@ for($i = 0; $i < count($titulosModulos); $i ++){
 
 										}else{
 
-											echo '<button type="button" class="btn btn-default btn-xs agregarCarrito" stock="'.$value['stock'].'"  idProducto="'.$value["id"].'" imagen="'.$servidor.$value["portada"].'" titulo="'.$value["titulo"].'" precio="'.$value["precio"].'" peso="'.$value["peso"].'" data-toggle="tooltip" title="Agregar al carrito">
+											echo '<button type="button" class="btn btn-default btn-xs agregarCarrito" stock="'.$value['stock'].'"  idProducto="'.$value["id"].'" imagen="'.$servidor.$value["portada"].'" titulo="'.$value["titulo"].'" precio="'.$value["precio"].'" data-toggle="tooltip" title="Agregar al carrito">
 
 											<i class="fa fa-shopping-cart" aria-hidden="true"></i>
 
@@ -352,7 +352,7 @@ for($i = 0; $i < count($titulosModulos); $i ++){
 
 										if($value["oferta"] != 0){
 
-											echo '<button type="button" class="btn btn-default btn-xs agregarCarrito"  idProducto="'.$value["id"].'" imagen="'.$servidor.$value["portada"].'" titulo="'.$value["titulo"].'" precio="'.$value["precioOferta"].'" tipo="'.$value["tipo"].'" peso="'.$value["peso"].'" data-toggle="tooltip" title="Agregar al carrito">
+											echo '<button type="button" class="btn btn-default btn-xs agregarCarrito"  idProducto="'.$value["id"].'" imagen="'.$servidor.$value["portada"].'" titulo="'.$value["titulo"].'" precio="'.$value["precioOferta"].'" tipo="'.$value["tipo"].'" data-toggle="tooltip" title="Agregar al carrito">
 
 											<i class="fa fa-shopping-cart" aria-hidden="true"></i>
 
@@ -360,7 +360,7 @@ for($i = 0; $i < count($titulosModulos); $i ++){
 
 										}else{
 
-											echo '<button type="button" class="btn btn-default btn-xs agregarCarrito"  idProducto="'.$value["id"].'" imagen="'.$servidor.$value["portada"].'" titulo="'.$value["titulo"].'" precio="'.$value["precio"].'" peso="'.$value["peso"].'" data-toggle="tooltip" title="Agregar al carrito">
+											echo '<button type="button" class="btn btn-default btn-xs agregarCarrito"  idProducto="'.$value["id"].'" imagen="'.$servidor.$value["portada"].'" titulo="'.$value["titulo"].'" precio="'.$value["precio"].'" data-toggle="tooltip" title="Agregar al carrito">
 
 											<i class="fa fa-shopping-cart" aria-hidden="true"></i>
 

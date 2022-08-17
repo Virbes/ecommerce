@@ -15,10 +15,6 @@ class ModeloNotificaciones{
 		$stmt -> execute();
 
 		return $stmt -> fetch();
-
-		$stmt -> close();
-		
-		$stmt = null;
 	
 	}
 
@@ -41,10 +37,6 @@ class ModeloNotificaciones{
 			return "error";	
 
 		}
-
-		$stmt -> close();
-
-		$stmt = null;
 
 	}
 

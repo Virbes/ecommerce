@@ -22,6 +22,10 @@
           Agregar Producto
         </button>
 
+        <!-- <a class="btn btn-primary" href="">
+          Agregar Producto
+        </a> -->
+
       </div>
 
       <div class="box-body">
@@ -33,14 +37,12 @@
                <th>Titulo</th>
                <th>Categoria</th>
                <th>Subcategoria</th>
-               <!-- <th>Ruta</th> -->
                <th>Estado</th>
-               <th>Descripción</th>
+               <th>Marca</th>
                <th>Imagen Principal</th>
                <th>Precio</th>
-               <th>Marca</th>
+               <th>Stock</th>
                <th>Acciones</th>
-               <!-- <th>Detalles</th> -->
             </tr> 
           </thead>
      
@@ -88,12 +90,22 @@ MODAL AGREGAR PRODUCTO
             </div>
 
             <!--=====================================
+            ENTRADA PARA LA RUTA DEL PRODUCTO
+            ======================================-->
+            <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-link"></i></span> 
+                  <input type="text" class="form-control input-lg rutaProducto" placeholder="Ruta url del producto" readonly>
+                </div>
+            </div>
+
+            <!--=====================================
             ENTRADA PARA EL CÓDIGO DEL PRODUCTO
             ======================================-->
             <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-barcode"></i></span> 
-                  <input type="number" class="form-control input-lg validarCodigo codigoProducto" placeholder="Código del producto">
+                  <input type="number" class="form-control input-lg validarCodigo codigoProducto" placeholder="Código de barras del producto">
                 </div>
             </div>
 
@@ -129,7 +141,7 @@ MODAL AGREGAR PRODUCTO
                 </div>
 
                 <div class="col-xs-9">
-                    <input class="form-control input-lg tagsInput detalleMarca" data-role="tagsinput" type="text" placeholder="Separe valores con coma">
+                    <input class="form-control input-lg marcaProducto" type="text">
                 </div>
 
               </div>
@@ -186,18 +198,6 @@ MODAL AGREGAR PRODUCTO
               </div>
             </div>
 
-
-            <!--=====================================
-            AGREGAR PALABRAS CLAVES
-            ======================================-->
-            <div class="form-group" style="display:none">
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-key"></i></span> 
-                  <input type="text" class="form-control input-lg tagsInput pClavesProducto" data-role="tagsinput"  placeholder="Ingresar palabras claves" value="">
-                </div>
-            </div>
-
-
             <!--=====================================
             AGREGAR FOTO DE PORTADA
             ======================================-->
@@ -227,29 +227,19 @@ MODAL AGREGAR PRODUCTO
             <div class="form-group row">
 
               <!-- PRECIO -->
-              <div class="col-md-4 col-xs-12">
+              <div class="col-md-6 col-xs-12">
                 <div class="panel">PRECIO</div>
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-usd"></i></span> 
-                  <input type="number" class="form-control input-lg precio" min="0" step="any" placeholder="Pesos MXN" require>
+                  <input type="number" class="form-control input-lg precio" min="0" step="any" placeholder="000.00   MXN" require>
                 </div>
               </div>
 
               
               <style>.mg-left-v {margin-left: -17px;}</style>
 
-
-              <!-- ENTREGA -->
-              <div class="col-md-4 col-xs-12 mg-left-v">
-                <div class="panel">DÍAS DE ENTREGA</div>             
-                <div class="input-group">             
-                  <span class="input-group-addon"><i class="fa fa-truck"></i></span> 
-                  <input type="number" class="form-control input-lg entrega" min="0" value="0">
-                </div>
-              </div>
-
                <!-- STOCK -->
-               <div class="col-md-4 col-xs-12 mg-left-v">
+               <div class="col-md-6 col-xs-12 mg-left-v">
                 <div class="panel">STOCK</div>             
                 <div class="input-group">             
                   <span class="input-group-addon"><i class="fa fa-cubes"></i></span> 
@@ -313,7 +303,7 @@ MODAL AGREGAR PRODUCTO
                 <div class="panel">SUBIR FOTO OFERTA</div>
                 <input type="file" class="fotoOferta valorOferta">
                 <p class="help-block">Tamaño recomendado 640px * 430px <br> Peso máximo de la foto 2MB</p>
-                <img src="vistas/img/ofertas/default/default.jpg" class="img-thumbnail previsualizarOferta" width="100px">
+                <img src="vistas/img/ofertas/default/default.png" class="img-thumbnail previsualizarOferta" width="100px">
               </div>
 
             </div>
@@ -422,7 +412,7 @@ MODAL EDITAR PRODUCTO
               <div class="form-group row">
 
                 <div class="col-xs-3">
-                  <input class="form-control input-lg" id="marcaProducto" type="text" value="Marca" readonly>
+                  <input class="form-control input-lg" type="text" value="Marca" readonly>
                 </div>
 
                 <div class="col-xs-9 editarMarca">
@@ -481,22 +471,6 @@ MODAL EDITAR PRODUCTO
                 <span class="input-group-addon"><i class="fa fa-pencil"></i></span> 
                 <textarea type="text" maxlength="320" rows="3" class="form-control input-lg descripcionProducto"></textarea>
               </div>
-            </div>
-
-            <!--=====================================
-            AGREGAR PALABRAS CLAVES
-            ======================================-->
-
-            <div class="form-group editarPalabrasClaves">
-              
-              <!--   <div class="input-group">
-              
-                  <span class="input-group-addon"><i class="fa fa-key"></i></span> 
-
-                  <input type="text" class="form-control input-lg tagsInput pClavesProducto" data-role="tagsinput"  placeholder="Ingresar palabras claves">
-
-                </div> -->
-
             </div>
 
             <!--=====================================
@@ -800,7 +774,7 @@ MODAL MÁS INFORMACIÓN
             FOTO DE MULTIMEDIA
             ======================================-->
             <div class="form-group">
-              <img src="vistas/img/productos/default/default.png" class="img-thumbnail previsualizarPrincipal" width="200px">
+              <img src="vistas/img/productos/default/default.jpg" class="img-thumbnail previsualizarPrincipal" width="200px">
             </div>
 
 

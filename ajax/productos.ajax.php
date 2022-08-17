@@ -9,9 +9,6 @@ require_once "../modelos/categorias.modelo.php";
 require_once "../controladores/subcategorias.controlador.php";
 require_once "../modelos/subcategorias.modelo.php";
 
-require_once "../controladores/cabeceras.controlador.php";
-require_once "../modelos/cabeceras.modelo.php";
-
 class AjaxProductos{
 
 	/*=============================================
@@ -51,7 +48,7 @@ class AjaxProductos{
 
 
 	/*=============================================
-	VALIDAR NO REPETIR PRODUCTO+
+	VALIDAR NO REPETIR PRODUCTO
 	=============================================*/	
 	public $validarCodigo;
 	public function ajaxValidarCodigo(){
@@ -82,13 +79,12 @@ class AjaxProductos{
 
 	public $tituloProducto;
 	public $rutaProducto;
-	public $codigoProducto;	
+	public $codigoProducto;
+	public $marcaProducto;			
 	public $seleccionarCategoria;
 	public $seleccionarSubCategoria;
 	public $descripcionProducto;
-	public $pClavesProducto;
 	public $precio;
-	public $entrega;
 	public $stock;
 	public $multimedia;
 	public $fotoPortada;
@@ -97,7 +93,6 @@ class AjaxProductos{
 	public $precioOferta;
 	public $descuentoOferta;
 	public $finOferta;
-	public $marcaProducto;
 	public $fotoOferta;
 
 	public $id;
@@ -115,9 +110,7 @@ class AjaxProductos{
 			"categoria"=>$this->seleccionarCategoria,
 			"subCategoria"=>$this->seleccionarSubCategoria,
 			"descripcionProducto"=>$this->descripcionProducto,
-			"pClavesProducto"=>$this->pClavesProducto,
 			"precio"=>$this->precio,
-			"entrega"=>$this->entrega,
 			"stock"=>$this->stock,
 			"multimedia"=>$this->multimedia,
 			"fotoPortada"=>$this->fotoPortada,
@@ -188,21 +181,7 @@ class AjaxProductos{
 		echo $respuesta;
 	}
 
-	//Inventariosxd
-	public $id_inventario;
-	public $cantidad;
-	public function  ajaxAgregarProductoInventario(){
-		$datos = array(
-			"id_inventario"=>$this->id_inventario,
-			"cantidad"=>$this->cantidad	
-		);
-
-		$respuesta = ControladorProductos::ctrAgregarProductoInventario($datos);
-
-		echo $respuesta;
-	}
-
-}
+ }
 
 /*=============================================
 ACTIVAR PRODUCTOS
@@ -254,14 +233,11 @@ if(isset($_POST["tituloProducto"])){
 	$producto -> tituloProducto = $_POST["tituloProducto"];
 	$producto -> rutaProducto = $_POST["rutaProducto"];
 	$producto -> codigoProducto = $_POST["codigoProducto"];
-	$producto -> detalles = $_POST["detalles"];		
+	$producto -> marcaProducto = $_POST["marcaProducto"];
 	$producto -> seleccionarCategoria = $_POST["seleccionarCategoria"];
 	$producto -> seleccionarSubCategoria = $_POST["seleccionarSubCategoria"];
 	$producto -> descripcionProducto = $_POST["descripcionProducto"];
-	$producto -> pClavesProducto = $_POST["pClavesProducto"];
 	$producto -> precio = $_POST["precio"];
-	$producto -> peso = $_POST["peso"];
-	$producto -> entrega = $_POST["entrega"];
 	$producto -> stock = $_POST["stock"];
 	$producto -> multimedia = $_POST["multimedia"];
 
@@ -313,14 +289,11 @@ if(isset($_POST["id"])){
 	$editarProducto -> tituloProducto = $_POST["editarProducto"];
 	$editarProducto -> rutaProducto = $_POST["rutaProducto"];
 	$editarProducto -> codigoProducto = $_POST["codigoProducto"];
-	$editarProducto -> detalles = $_POST["detalles"];		
+	$editarProducto -> marcaProducto = $_POST["marcaProducto"];		
 	$editarProducto -> seleccionarCategoria = $_POST["seleccionarCategoria"];
 	$editarProducto -> seleccionarSubCategoria = $_POST["seleccionarSubCategoria"];
 	$editarProducto -> descripcionProducto = $_POST["descripcionProducto"];
-	$editarProducto -> pClavesProducto = $_POST["pClavesProducto"];
 	$editarProducto -> precio = $_POST["precio"];
-	$editarProducto -> peso = $_POST["peso"];
-	$editarProducto -> entrega = $_POST["entrega"];
 	$editarProducto -> multimedia = $_POST["multimedia"];
 
 	if(isset($_FILES["fotoPortada"])){
@@ -353,14 +326,7 @@ if(isset($_POST["id"])){
 	$editarProducto -> idCabecera = $_POST["idCabecera"];
 
 	$editarProducto -> ajaxEditarProducto();
-}
 
-if(isset($_POST["idProductoInventario"])){
-	$agregarInventario = new AjaxProductos();
-	$agregarInventario -> id_inventario = $_POST["idProductoInventario"];
-	$agregarInventario -> cantidad = $_POST["cantidad"];
-
-	$agregarInventario -> ajaxAgregarProductoInventario();
 }
 
 

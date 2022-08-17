@@ -34,12 +34,6 @@
 			$ruta = "inicio";
 		}
 
-		$cabeceras = ControladorPlantilla::ctrTraerCabeceras($ruta);
-		
-		if(!$cabeceras["ruta"]){
-			$ruta = "inicio";
-			$cabeceras = ControladorPlantilla::ctrTraerCabeceras($ruta);
-		}
 
 	?>
 
@@ -49,7 +43,8 @@
 	<meta name="title" content="<?php echo  $cabeceras['titulo']; ?>">
 	<meta name="description" content="<?php echo  $cabeceras['descripcion']; ?>">
 	<meta name="keyword" content="<?php echo  $cabeceras['palabrasClaves']; ?>">
-	<title><?php echo  $cabeceras['titulo']; ?></title>
+	
+	<title>Ferre Agna</title>
 
 
 	<!--=====================================

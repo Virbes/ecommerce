@@ -23,13 +23,14 @@ class ControladorUsuarios{
 							   "password"=> $encriptar,
 							   "email"=> $_POST["regEmail"],
 							   "foto"=>"",
-							   "verificacion"=> 1,
+							   "verificacion"=> 0,
 							   "emailEncriptado"=>$encriptarEmail);
 
 				$tabla = "usuarios";
 
 				$respuesta = ModeloUsuarios::mdlRegistroUsuario($tabla, $datos);
 
+				return;
 				if($respuesta == "ok"){
 
 					/*=============================================

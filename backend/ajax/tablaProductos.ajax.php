@@ -9,13 +9,10 @@ require_once "../modelos/categorias.modelo.php";
 require_once "../controladores/subcategorias.controlador.php";
 require_once "../modelos/subcategorias.modelo.php";
 
-require_once "../controladores/cabeceras.controlador.php";
-require_once "../modelos/cabeceras.modelo.php";
-
 class TablaProductos{
 
   /*=============================================
-  MOSTRAR LA TABLA DE PRODUCTOS
+  			MOSTRAR LA TABLA DE PRODUCTOS
   =============================================*/ 
 
   public function mostrarTablaProductos(){	
@@ -36,13 +33,14 @@ class TablaProductos{
 
 	 	for($i = 0; $i < count($productos); $i++){
 
-			/*=============================================
-  			TRAER LAS CATEGORÍAS
-  			=============================================*/
-  			$item = "id";
+
+			/* Trae el titulo del producto */
+			$titulo = "<b style='color: #474b4e'>".$productos[$i]['titulo']."</b>";
+
+			/* Traer las categorias */
 			$valor = $productos[$i]["id_categoria"];
 
-			$categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
+			$categorias = ControladorCategorias::ctrMostrarCategorias('id', $valor);
 
 			if($categorias["categoria"] == ""){
 				$categoria = "SIN CATEGORÍA";
@@ -50,13 +48,10 @@ class TablaProductos{
 				$categoria = $categorias["categoria"];
 			}
 
-			/*=============================================
-  			TRAER LAS SUBCATEGORÍAS
-  			=============================================*/
-  			$item2 = "id";
+			/* Traer las subcategorias */
 			$valor2 = $productos[$i]["id_subcategoria"];
 
-			$subcategorias = ControladorSubCategorias::ctrMostrarSubCategorias($item2, $valor2);
+			$subcategorias = ControladorSubCategorias::ctrMostrarSubCategorias('id', $valor2);
 
 			if($subcategorias[0]["subcategoria"] == ""){
 				$subcategoria = "SIN SUBCATEGORÍA";
@@ -64,10 +59,7 @@ class TablaProductos{
 				$subcategoria = $subcategorias[0]["subcategoria"];
 			}
 
-			/*=============================================
-  			AGREGAR ETIQUETAS DE ESTADO
-  			=============================================*/
-
+			/* Agregar las etiquetas de estado */
   			if($productos[$i]["estado"] == 0){
   				$colorEstado = "btn-danger";
   				$textoEstado = "Desactivado";
@@ -80,51 +72,20 @@ class TablaProductos{
 
   			$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idProducto='".$productos[$i]["id"]."' estadoProducto='".$estadoProducto."'>".$textoEstado."</button>";
 
-  			/*=============================================
-  			TRAER LAS CABECERAS
-  			=============================================*/
-
-			$valor3 = $productos[$i]["ruta"];
-			$cabeceras = ControladorCabeceras::getCabeceras($valor3);
-
-			/*=============================================
-  			TRAER IMAGEN PRINCIPAL
-  			=============================================*/
+			/* Traer imagen principal */
   			$imagenPrincipal = "<img src='".$productos[$i]["portada"]."' class='img-thumbnail imgTablaPrincipal' width='100px'>";
 
+  			/* Traer marca del producto */
+  			$marca = $productos[$i]["marcaProducto"];
 
-  			/*=============================================
-  			TRAER DETALLES
-  			=============================================*/
-  			$detalles = json_decode($productos[$i]["detalles"],true);
-
-            $color = json_encode($detalles["Color"]);
-            $marca = json_encode($detalles["Marca"]);
-
-            $vistaDetalles = "Color: ".str_replace(array("[","]",'"'), "", $color)."Marca: ".str_replace(array("[","]",'"'), "", $marca);
-
-
-  			/*=============================================
-  			TRAER PRECIO
-  			=============================================*/
+  			/* Traer Precio */
   			if($productos[$i]["precio"] == 0){
   				$precio = "Gratis";
   			}else{
   				$precio = "$ ".number_format($productos[$i]["precio"],2)." MXN";
   			}
 
-  			/*=============================================
-  			TRAER ENTREGA
-  			=============================================*/
-  			if($productos[$i]["entrega"] == 0){
-  				$entrega = "Inmediata";
-  			}else{
-  				$entrega = $productos[$i]["entrega"]. " días hábiles";
-  			}
-
-  			/*=============================================
-  			REVISAR SI HAY OFERTAS
-  			=============================================*/
+  			/* REVISAR SI HAY OFERTAS */
 			if($productos[$i]["oferta"] != 0){
 
 				if($productos[$i]["precioOferta"] != 0){
@@ -153,30 +114,27 @@ class TablaProductos{
   			TRAER LAS ACCIONES
   			=============================================*/
   			//$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarProducto' idProducto='".$productos[$i]["id"]."' data-toggle='modal' data-target='#modalEditarProducto'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarProducto' idProducto='".$productos[$i]["id"]."' imgOferta='".$productos[$i]["imgOferta"]."' rutaCabecera='".$productos[$i]["ruta"]."' imgPortada='".$cabeceras["portada"]."' imgPrincipal='".$productos[$i]["portada"]."'><i class='fa fa-times'></i></button></div>";
-			$acciones = "<div class='btn-group'><button class='btn btn-danger btnEliminarProducto' idProducto='".$productos[$i]["id"]."' imgOferta='".$productos[$i]["imgOferta"]."' rutaCabecera='".$productos[$i]["ruta"]."' imgPortada='".$cabeceras["portada"]."' imgPrincipal='".$productos[$i]["portada"]."'><i class='fa fa-times'></i></button></div>";
+			$acciones = "<div class='btn-group'><button class='btn btn-danger btnEliminarProducto' idProducto='".$productos[$i]["id"]."' imgOferta='".$productos[$i]["imgOferta"]."' rutaCabecera='".$productos[$i]["ruta"]."' imgPrincipal='".$productos[$i]["portada"]."'><i class='fa fa-times'></i></button></div>";
 
 
-			/*=============================================
-  			Boton de más información
-  			=============================================*/
+			/* Boton de más información */
             $info = "<button class='btn btnInfoProducto' idProducto='".$productos[$i]["id"]."' data-toggle='modal' data-target='#modalInfoProducto' style='background: #ff6600; margin-left: 10px;'><i class='fa fa-info-circle' style='color: #fff; width: 30px;'></i></button>";
   			
-			/*=============================================
-  			Ruta del producto
-  			=============================================*/
-			$rutax = "<a href='http://ferreagna.online/".$productos[$i]['ruta']."' target='_blank'>/".$productos[$i]["ruta"]."</a>";
+			/* Ruta del producto */
+			// $rutax = "<a href='http://ferreagna.online/".$productos[$i]['ruta']."' target='_blank'>/".$productos[$i]["ruta"]."</a>";
+			$rutax = "<p style='color:#7b241c'>/".$productos[$i]["ruta"]."</p>";
 
 			/*=============================================
   			CONSTRUIR LOS DATOS JSON
   			=============================================*/
 			$datosJson .='[
 					"'.($i+1).'",
-					"'.$productos[$i]["titulo"].'",
+					"'.$titulo.'",
 					"'.$categoria.'",
 					"'.$subcategoria.'",
 					"'.$rutax.'",
 					"'.$estado.'",
-					"'.$cabeceras["descripcion"].'",
+					"'.$marca.'",
 				  	"'.$imagenPrincipal.'",
 		  			"'.$precio.'",
 				  	"'.$productos[$i]["stock"].'",

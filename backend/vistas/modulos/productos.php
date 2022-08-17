@@ -39,7 +39,7 @@
                <th>Subcategoria</th>
                <th>Ruta</th>
                <th>Estado</th>
-               <th>Descripción</th>
+               <th>Marca</th>
                <th>Imagen Principal</th>
                <th>Precio</th>
                <th>Stock</th>
@@ -106,7 +106,7 @@ MODAL AGREGAR PRODUCTO
             <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-barcode"></i></span> 
-                  <input type="number" class="form-control input-lg validarCodigo codigoProducto" placeholder="Código del producto">
+                  <input type="number" class="form-control input-lg validarCodigo codigoProducto" placeholder="Código de barras del producto">
                 </div>
             </div>
 
@@ -134,19 +134,6 @@ MODAL AGREGAR PRODUCTO
             <div class="detallesFisicos">
               <div class="panel">DETALLES</div>
 
-              <!-- COLOR -->
-              <div class="form-group row">
-
-                <div class="col-xs-3">
-                  <input class="form-control input-lg" type="text" value="Color" readonly>
-                </div>
-
-                <div class="col-xs-9">
-                    <input class="form-control input-lg tagsInput detalleColor" data-role="tagsinput" type="text" placeholder="Separe valores con coma">
-                </div>
-
-              </div>
-
               <!-- MARCA -->
               <div class="form-group row">
 
@@ -155,7 +142,7 @@ MODAL AGREGAR PRODUCTO
                 </div>
 
                 <div class="col-xs-9">
-                    <input class="form-control input-lg tagsInput detalleMarca" data-role="tagsinput" type="text" placeholder="Separe valores con coma">
+                    <input class="form-control input-lg marcaProducto" type="text">
                 </div>
 
               </div>
@@ -212,18 +199,6 @@ MODAL AGREGAR PRODUCTO
               </div>
             </div>
 
-
-            <!--=====================================
-            AGREGAR PALABRAS CLAVES
-            ======================================-->
-            <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-key"></i></span> 
-                  <input type="text" class="form-control input-lg tagsInput pClavesProducto" data-role="tagsinput"  placeholder="Ingresar palabras claves">
-                </div>
-            </div>
-
-
             <!--=====================================
             AGREGAR FOTO DE PORTADA
             ======================================-->
@@ -253,38 +228,19 @@ MODAL AGREGAR PRODUCTO
             <div class="form-group row">
 
               <!-- PRECIO -->
-              <div class="col-md-4 col-xs-12">
+              <div class="col-md-6 col-xs-12">
                 <div class="panel">PRECIO</div>
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-usd"></i></span> 
-                  <input type="number" class="form-control input-lg precio" min="0" step="any" placeholder="Pesos MXN" require>
+                  <input type="number" class="form-control input-lg precio" min="0" step="any" placeholder="000.00   MXN" require>
                 </div>
               </div>
 
               
               <style>.mg-left-v {margin-left: -17px;}</style>
 
-              <!-- PESO -->
-              <div class="col-md-3 col-xs-12 mg-left-v">
-                <div class="panel">PESO</div>
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-balance-scale"></i></span> 
-                  <input type="number" class="form-control input-lg peso" min="0" step="any" value="0">
-                </div>
-              </div>
-
-
-              <!-- ENTREGA -->
-              <div class="col-md-3 col-xs-12 mg-left-v">
-                <div class="panel">DÍAS DE ENTREGA</div>             
-                <div class="input-group">             
-                  <span class="input-group-addon"><i class="fa fa-truck"></i></span> 
-                  <input type="number" class="form-control input-lg entrega" min="0" value="0">
-                </div>
-              </div>
-
                <!-- STOCK -->
-               <div class="col-md-3 col-xs-12 mg-left-v">
+               <div class="col-md-6 col-xs-12 mg-left-v">
                 <div class="panel">STOCK</div>             
                 <div class="input-group">             
                   <span class="input-group-addon"><i class="fa fa-cubes"></i></span> 
@@ -516,22 +472,6 @@ MODAL EDITAR PRODUCTO
                 <span class="input-group-addon"><i class="fa fa-pencil"></i></span> 
                 <textarea type="text" maxlength="320" rows="3" class="form-control input-lg descripcionProducto"></textarea>
               </div>
-            </div>
-
-            <!--=====================================
-            AGREGAR PALABRAS CLAVES
-            ======================================-->
-
-            <div class="form-group editarPalabrasClaves">
-              
-              <!--   <div class="input-group">
-              
-                  <span class="input-group-addon"><i class="fa fa-key"></i></span> 
-
-                  <input type="text" class="form-control input-lg tagsInput pClavesProducto" data-role="tagsinput"  placeholder="Ingresar palabras claves">
-
-                </div> -->
-
             </div>
 
             <!--=====================================

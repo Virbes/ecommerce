@@ -95,21 +95,6 @@ class ModeloCarrito {
 
 	}
 
-
-	/*=============================================
-	MOSTRAR TARIFAS
-	=============================================*/
-
-	static public function mdlMostrarTarifas($tabla){
-
-		$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
-
-		$stmt -> execute();
-
-		return $stmt -> fetch();
-
-	}
-
 	/*=============================================
 	NUEVAS COMPRAS
 	=============================================*/

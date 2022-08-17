@@ -524,8 +524,7 @@ $(".guardarProducto").click(function(){
 	   $(".seleccionarCategoria").val() != "" &&
 	   $(".codigoProducto").val() != "" &&
 	   $(".seleccionarSubCategoria").val() != "" &&
-	   $(".descripcionProducto").val() != "" &&
-	   $(".pClavesProducto").val() != ""){
+	   $(".descripcionProducto").val() != ""){
 
 		/*=============================================
 	   	PREGUNTAMOS SI VIENEN IMÁGENES PARA MULTIMEDIA O LINK DE YOUTUBE
@@ -644,40 +643,27 @@ function agregarMiProducto(imagen){
 		var tituloProducto = $(".tituloProducto").val();
 		var rutaProducto = $(".rutaProducto").val();
 		var codigoProducto = $(".codigoProducto").val();
+		var marcaProducto = $('.marcaProducto').val();
 	   	var seleccionarCategoria = $(".seleccionarCategoria").val();
 	    var seleccionarSubCategoria = $(".seleccionarSubCategoria").val();
 	    var descripcionProducto = $(".descripcionProducto").val();
-	    var pClavesProducto = $(".pClavesProducto").val();
 	    var precio = $(".precio").val();
-	    var peso = $(".peso").val();
-	    var entrega = $(".entrega").val();
 		var stock = $(".stock").val();
 	    var selActivarOferta = $(".selActivarOferta").val();
 	    var precioOferta = $(".precioOferta").val();
 	    var descuentoOferta = $(".descuentoOferta").val();
 	    var finOferta = $(".finOferta").val();
 
-		var detalles = {
-							"Color": $(".detalleColor").tagsinput('items'),
-							"Marca": $(".detalleMarca").tagsinput('items')
-						};
-
-		
-
-		var detallesString = JSON.stringify(detalles);
 
 	 	var datosProducto = new FormData();
 		datosProducto.append("tituloProducto", tituloProducto);
 		datosProducto.append("rutaProducto", rutaProducto);
 		datosProducto.append("codigoProducto", codigoProducto);
-		datosProducto.append("detalles", detallesString);	
+		datosProducto.append("marcaProducto", marcaProducto);	
 		datosProducto.append("seleccionarCategoria", seleccionarCategoria);
 		datosProducto.append("seleccionarSubCategoria", seleccionarSubCategoria);
 		datosProducto.append("descripcionProducto", descripcionProducto);
-		datosProducto.append("pClavesProducto", pClavesProducto);
 		datosProducto.append("precio", precio);
-		datosProducto.append("peso", peso);
-		datosProducto.append("entrega", entrega);	
 		datosProducto.append("stock", stock);	
 		datosProducto.append("multimedia", imagen);
 		
@@ -1310,8 +1296,25 @@ $('.tablaProductos tbody').on("click", ".btnEliminarProducto", function(){
 
     if(result.value){
 
-      window.location = "index.php?ruta=productos&idProducto="+idProducto+"&imgOferta="+imgOferta+"&rutaCabecera="+rutaCabecera+"&imgPortada="+imgPortada+"&imgPrincipal="+imgPrincipal;
+		// Eliminar
+		$.ajax({
+    
+			type: 'POST',
+			url: 'ajax/eliminarProducto.ajax.php',
+			data: {
+				action: 'eliminarProducto', 
+				idProducto: idProducto
+			}
 
+		}).done(function (result) {
+			
+		}).fail(function () {
+			alert('ERROR');
+		});
+
+
+
+		window.location.reload();
     }
 
   })

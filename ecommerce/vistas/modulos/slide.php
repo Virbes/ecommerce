@@ -57,7 +57,7 @@
 
             <!-- Slide 3 -->
             <li>
-                <img src="<?php echo $servidor?>vistas/img/slide/slide3/material3.jpg">
+                <img src="<?php echo $servidor?>vistas/img/slide/slide3/material3.jpg" style="margin-top: -207px">
                 
                 <div class="slideOpciones slideOpcion1">
                     <img src="" class="imgProducto">
@@ -78,24 +78,6 @@
                 </div>
             </li>
 
-            <!-- Slide 4 -->
-            <li>
-                <img src="<?php echo $servidor?>vistas/img/slide/slide2/imagen.jpg">
-                
-                <div class="slideOpciones slideOpcion1">
-                    <img src="" class="imgProducto">
-                    
-                    <!-- <div class="" id="ayuda">
-                        <a href="#">
-                            <button class="btn btn-default backColor">
-                                SEGUIR LEYENDO <span class="fa fa-chevron-right"></span>
-                            </button>
-                        </a>
-                    </div> -->
-
-                </div>
-            </li>
-
         </ul>
 
         <!-- Paginación -->
@@ -103,7 +85,6 @@
             <li item="1"><span class="fa fa-circle"></span></li>
             <li item="2"><span class="fa fa-circle"></span></li>
             <li item="3"><span class="fa fa-circle"></span></li>
-            <li item="4"><span class="fa fa-circle"></span></li>
         </ol>
 
         <!-- Flechas -->

@@ -4,21 +4,6 @@ require_once "conexion.php";
 
 class ModeloProductos{
 
-	public static function mdlAgregarInventario($id, $cantidad) {
-
-		$stmt = Conexion::conectar()->prepare("UPDATE productos SET stock = :cantidad WHERE id = :id");
-
-		$stmt->bindParam(":cantidad", $cantidad, PDO::PARAM_INT);
-		$stmt->bindParam(":id", $id, PDO::PARAM_INT);
-
-		if($stmt->execute()){
-			return "ok";
-		}else{
-			return "error";
-		}
-
-	}
-
 	/*=============================================
 	MOSTRAR EL TOTAL DE VENTAS
 	=============================================*/	
@@ -58,22 +43,17 @@ class ModeloProductos{
 		$stmt -> bindParam(":".$item1, $valor1, PDO::PARAM_STR);
 		$stmt -> bindParam(":".$item2, $valor2, PDO::PARAM_STR);
 
-		if ($stmt -> execute()) { return "ok"; } else { return "error";	}
-	}
+		if($stmt -> execute()){
 
-	/*=============================================
-	ACTUALIZAR PRODUCTO => VENTA
-	=============================================*/
+			return "ok";
+		
+		}else{
 
-	static public function mdlActualizarProductoVENTA($tabla, $item1, $valor1, $valor){
+			return "error";	
 
-		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET $item1 = :$item1 WHERE id = :id");
+		}
 
-		$stmt -> bindParam(":".$item1, $valor1, PDO::PARAM_STR);
-		$stmt -> bindParam(":id", $valor, PDO::PARAM_STR);
-
-		if ($stmt -> execute()) { return "ok"; } else { return "error"; }
-
+		
 	}
 
 	/*=============================================
@@ -109,32 +89,14 @@ class ModeloProductos{
 	=============================================*/
 
 	static public function mdlMostrarProductos($tabla, $item, $valor){
+
 		if($item != null){
 			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
 			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
 			$stmt -> execute();
-			return $stmt -> fetch();
+			return $stmt -> fetchAll();
 		}else{
 			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY id DESC");
-			$stmt -> execute();
-			return $stmt -> fetchAll();
-		}
-	}
-
-	static public function mdlMostrarProductosParaVender($tabla, $item, $valor){
-		$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE estado = 1 ORDER BY id DESC");
-		$stmt -> execute();
-		return $stmt -> fetchAll();
-	}
-
-	static public function mdlMostrarProductosFactura($tabla, $item, $valor, $orden){
-		if($item != null){
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item ORDER BY id DESC");
-			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
-			$stmt -> execute();
-			return $stmt -> fetch();
-		}else{
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY $orden DESC");
 			$stmt -> execute();
 			return $stmt -> fetchAll();
 		}
@@ -159,7 +121,7 @@ class ModeloProductos{
 
 	static public function mdlIngresarProducto($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(id_categoria, id_subcategoria, codigo, ruta, estado, titulo, titular, descripcion, multimedia, detalles, precio, portada, oferta, precioOferta, descuentoOferta, imgOferta, finOferta, peso, entrega, stock) VALUES (:id_categoria, :id_subcategoria, :codigo, :ruta, :estado, :titulo, :titular, :descripcion, :multimedia, :detalles, :precio, :portada, :oferta, :precioOferta, :descuentoOferta, :imgOferta, :finOferta,  :peso, :entrega, :stock)");
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(id_categoria, id_subcategoria, codigo, ruta, estado, titulo, descripcion, multimedia, marcaProducto, precio, portada, oferta, precioOferta, descuentoOferta, imgOferta, finOferta, stock) VALUES (:id_categoria, :id_subcategoria, :codigo, :ruta, :estado, :titulo, :descripcion, :multimedia, :marcaProducto, :precio, :portada, :oferta, :precioOferta, :descuentoOferta, :imgOferta, :finOferta, :stock)");
 
 		$stmt->bindParam(":id_categoria", $datos["idCategoria"], PDO::PARAM_STR);
 		$stmt->bindParam(":id_subcategoria", $datos["idSubCategoria"], PDO::PARAM_STR);
@@ -167,7 +129,6 @@ class ModeloProductos{
 		$stmt->bindParam(":ruta", $datos["ruta"], PDO::PARAM_STR);
 		$stmt->bindParam(":estado", $datos["estado"], PDO::PARAM_STR);
 		$stmt->bindParam(":titulo", $datos["titulo"], PDO::PARAM_STR);
-		$stmt->bindParam(":titular", $datos["titular"], PDO::PARAM_STR);
 		$stmt->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
 		$stmt->bindParam(":multimedia", $datos["multimedia"], PDO::PARAM_STR);
 		$stmt->bindParam(":marcaProducto", $datos["marcaProducto"], PDO::PARAM_STR);
@@ -178,7 +139,6 @@ class ModeloProductos{
 		$stmt->bindParam(":descuentoOferta", $datos["descuentoOferta"], PDO::PARAM_STR);
 		$stmt->bindParam(":imgOferta", $datos["imgOferta"], PDO::PARAM_STR);
 		$stmt->bindParam(":finOferta", $datos["finOferta"], PDO::PARAM_STR);
-		$stmt->bindParam(":entrega", $datos["entrega"], PDO::PARAM_STR);
 		$stmt->bindParam(":stock", $datos["stock"], PDO::PARAM_STR);
 
 		if($stmt->execute()){

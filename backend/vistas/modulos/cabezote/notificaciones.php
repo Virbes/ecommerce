@@ -6,7 +6,7 @@
 
 $notificaciones = ControladorNotificaciones::ctrMostrarNotificaciones();
 
-$totalNotificaciones = $notificaciones["nuevosUsuarios"] + $notificaciones["nuevasVentas"] + $notificaciones["nuevasVisitas"] + $notificaciones["nuevosPedidos"];
+$totalNotificaciones = $notificaciones["nuevosUsuarios"] + $notificaciones["nuevosPedidos"];
 
 ?>
 
@@ -38,20 +38,6 @@ NOTIFICACIONES
 				<li>
 					<a href="" class="actualizarNotificaciones" item="nuevosUsuarios">
 						<i class="fa fa-users text-aqua"></i> <?php  echo $notificaciones["nuevosUsuarios"] ?> nuevos usuarios registrados
-					</a>
-				</li>
-
-				<!-- ventas -->
-				<li>				
-					<a href="" class="actualizarNotificaciones" item="nuevasVentas">
-						<i class="fa fa-shopping-cart text-aqua"></i> <?php  echo $notificaciones["nuevasVentas"] ?> nuevas ventas
-					</a>
-				</li>
-				
-				<!-- visitas -->
-				<li>
-					<a href="" class="actualizarNotificaciones" item="nuevasVisitas">
-						<i class="fa fa-map-marker text-aqua"></i> <?php  echo $notificaciones["nuevasVisitas"] ?> nuevas visitas
 					</a>
 				</li>
 

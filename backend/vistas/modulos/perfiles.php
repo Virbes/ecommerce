@@ -115,7 +115,11 @@ return;
                      '<b style="color: #474b4e">'.date("h:i:s A", strtotime($value['ultimo_login'])).' - '.'</b><span style="color: #9b9b9b">'.$value['sistema'].'</span>'.
                      '</td>';
 
-                         echo '<td>
+
+                     if (!($value['nombre'] == 'admin')) {
+
+                         echo 
+                         '<td>
 
                           <div class="btn-group">
                               
@@ -125,9 +129,10 @@ return;
 
                           </div>  
 
-                        </td>
-
-                      </tr>';            
+                        </td>';
+                     }
+                     
+                      echo '</tr>';            
              }
 
 

@@ -2,12 +2,6 @@
 
 class ControladorProductos{
 
-	public static function ctrAgregarProductoInventario($datos) {
-		$tabla = "productos";
-		$respuesta = ModeloProductos::mdlAgregarInventario($datos['id_inventario'], $datos['cantidad']);
-		return $respuesta;
-	}
-
 	/*=============================================
 	MOSTRAR TOTAL PRODUCTOS
 	=============================================*/
@@ -38,19 +32,6 @@ class ControladorProductos{
 	static public function ctrMostrarProductos($item, $valor){
 		$tabla = "productos";
 		$respuesta = ModeloProductos::mdlMostrarProductos($tabla, $item, $valor);
-		return $respuesta;
-	}
-
-	static public function ctrMostrarProductosParaVender($item, $valor){
-		$tabla = "productos";
-		$respuesta = ModeloProductos::mdlMostrarProductosParaVender($tabla, $item, $valor);
-		return $respuesta;
-	}
-
-
-	static public function ctrMostrarProductosFactura($item, $valor, $orden){
-		$tabla = "productos";
-		$respuesta = ModeloProductos::mdlMostrarProductosFactura($tabla, $item, $valor, $orden);
 		return $respuesta;
 	}
 
@@ -179,27 +160,17 @@ class ControladorProductos{
 					}
 
 					if($datos["fotoPortada"]["type"] == "image/png"){
-
 						/*=============================================
 						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
-
 						$aleatorio = mt_rand(100,999);
-
 						$rutaPortada = "../vistas/img/cabeceras/".$datos["rutaProducto"].".png";
-
 						$origen = imagecreatefrompng($datos["fotoPortada"]["tmp_name"]);						
-
 						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
-
 						imagealphablending($destino, FALSE);
-				
 						imagesavealpha($destino, TRUE);
-
 						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
-
 						imagepng($destino, $rutaPortada);
-
 					}
 
 				}
@@ -226,47 +197,29 @@ class ControladorProductos{
 					=============================================*/
 
 					if($datos["fotoPrincipal"]["type"] == "image/jpeg"){
-
 						/*=============================================
 						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
-
 						$aleatorio = mt_rand(100,999);
-
 						$rutaFotoPrincipal = "../vistas/img/productos/".$datos["rutaProducto"].".jpg";
-
 						$origen = imagecreatefromjpeg($datos["fotoPrincipal"]["tmp_name"]);						
-
 						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
-
 						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
-
 						imagejpeg($destino, $rutaFotoPrincipal);
-
 					}
 
 					if($datos["fotoPrincipal"]["type"] == "image/png"){
-
 						/*=============================================
 						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
-
 						$aleatorio = mt_rand(100,999);
-
 						$rutaFotoPrincipal = "../vistas/img/productos/".$datos["rutaProducto"].".png";
-
 						$origen = imagecreatefrompng($datos["fotoPrincipal"]["tmp_name"]);						
-
 						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
-
 						imagealphablending($destino, FALSE);
-				
 						imagesavealpha($destino, TRUE);
-
 						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
-
 						imagepng($destino, $rutaFotoPrincipal);
-
 					}
 
 				}
@@ -294,22 +247,15 @@ class ControladorProductos{
 					=============================================*/
 
 					if($datos["fotoOferta"]["type"] == "image/jpeg"){
-
 						/*=============================================
 						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
-
 						$aleatorio = mt_rand(100,999);
-
 						$rutaOferta = "../vistas/img/ofertas/".$datos["rutaProducto"].".jpg";
-
 						$origen = imagecreatefromjpeg($datos["fotoOferta"]["tmp_name"]);						
 						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
-
 						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
-
 						imagejpeg($destino, $rutaOferta);
-
 					}
 
 					if($datos["fotoOferta"]["type"] == "image/png"){
@@ -317,22 +263,14 @@ class ControladorProductos{
 						/*=============================================
 						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
-
 						$aleatorio = mt_rand(100,999);
-
 						$rutaOferta = "../vistas/img/ofertas/".$datos["rutaProducto"].".png";
-
 						$origen = imagecreatefrompng($datos["fotoOferta"]["tmp_name"]);						
 						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
-
 						imagealphablending($destino, FALSE);
-				
 						imagesavealpha($destino, TRUE);
-
 						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
-
 						imagepng($destino, $rutaOferta);
-
 					}
 
 				}
@@ -352,11 +290,8 @@ class ControladorProductos{
 						   "ruta"=>$datos["rutaProducto"],
 						   "codigoProducto"=>$datos["codigoProducto"],
 						   "estado"=> 1,
-						   "titular"=> substr($datos["descripcionProducto"], 0, 225)."...",
 						   "descripcion"=> $datos["descripcionProducto"],
-						   "palabrasClaves"=> $datos["pClavesProducto"],
 						   "precio"=> $datos["precio"],
-						   "entrega"=> $datos["entrega"],  
 						   "stock"=> $datos["stock"],  
 						   "imgPortada"=>substr($rutaPortada,3),
 						   "imgFotoPrincipal"=>substr($rutaFotoPrincipal,3),
@@ -379,11 +314,8 @@ class ControladorProductos{
 						   "ruta"=>$datos["rutaProducto"],
 						   "codigoProducto"=>$datos["codigoProducto"],
 						   "estado"=> 1,
-						   "titular"=> substr($datos["descripcionProducto"], 0, 225)."...",
 						   "descripcion"=> $datos["descripcionProducto"],
-						   "palabrasClaves"=> $datos["pClavesProducto"],
 						   "precio"=> $datos["precio"],
-						   "entrega"=> $datos["entrega"],  
 						   "stock"=> $datos["stock"],  
 						   "imgPortada"=>substr($rutaPortada,3),
 						   "imgFotoPrincipal"=>substr($rutaFotoPrincipal,3),
@@ -395,8 +327,6 @@ class ControladorProductos{
 					   );
 
 				}
-
-				ModeloCabeceras::mdlIngresarCabecera("cabeceras", $datosProducto);
 				$respuesta = ModeloProductos::mdlIngresarProducto("productos", $datosProducto);
 
 				return $respuesta;
